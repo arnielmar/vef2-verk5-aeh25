@@ -70,9 +70,21 @@ export function News({ id }) {
     );
   }
 
+  console.log(data.items);
+
   return (
     <div className="news">
       <h3>{data.title}</h3>
+      {data.items && data.items.map((item, i) => {
+        console.log('category :>> ', item);
+        const {
+          title,
+        } = item;
+        return (
+          <p key={i}>{title}</p>
+        );
+      })}
+      <Link to="/">Til baka</Link>
     </div>
   );
 }

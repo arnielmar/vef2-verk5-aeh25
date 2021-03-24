@@ -71,16 +71,3 @@ export function NewsList() {
     </div>
   );
 }
-
-/*
-        {newsList.length > 0 && newsList.map((category) => {
-          const {
-            title,
-          } = category.properties;
-          return (
-            <div className="newslist__col">
-              <h3>{title}</h3>
-            </div>
-          )
-        })}
-        */
