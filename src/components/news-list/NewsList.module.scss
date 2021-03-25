@@ -1,8 +1,8 @@
-@import '../../config.scss';
+@import '../../config';
 
 .newslist {
-  max-width: $max-width;
   margin: $gutter auto;
+  max-width: $max-width;
 
   &__row {
     @include row;
