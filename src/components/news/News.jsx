@@ -9,9 +9,10 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 News.propTypes = {
   id: PropTypes.string,
+  all: PropTypes.bool,
 }
 
-export function News({ id }) {
+export function News({ id, all }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState(false);
@@ -61,7 +62,7 @@ export function News({ id }) {
     );
   }
 
-  if (error) {
+  if (error && all) {
     return (
       <div>
         <p>Villa kom upp: {error}</p>
@@ -70,30 +71,63 @@ export function News({ id }) {
     );
   }
 
-  console.log(data.items);
+  if (error) {
+    return (
+      <div>
+        <p>Villa kom upp: {error}</p>
+      </div>
+    );
+  }  
 
-  return (
-    <div className={s.news}>
-      <div className={s.news__row}>
-        <div className={s.news__col}>
-          <h2 className={s.news__header}>{data.title}</h2>
-          {data.items && data.items.map((item, i) => {
-            console.log('category :>> ', item);
-            const {
-              title,
-              link,
-            } = item;
-            return (
-              <a href={link} className={s.news__item__link}> 
-                <p key={i} className={s.news__item}>{title}</p> 
-              </a>
-            );
-          })}
-          <Link to="/" className={s.news__back__link}>
-            <p className={s.news__back}>Til baka</p>
-          </Link>
+  if (all) {
+    return (
+      <div className={s.news}>
+        <div className={s.news__row}>
+          <div className={s.news__col}>
+            <h2 className={s.news__header}>{data.title}</h2>
+            {data.items && data.items.map((item, i) => {
+              console.log('category :>> ', item);
+              const {
+                title,
+                link,
+              } = item;
+              return (
+                <a href={link} className={s.news__item__link}> 
+                  <p key={i} className={s.news__item}>{title}</p> 
+                </a>
+              );
+            })}
+            <Link to="/" className={s.news__back__link}>
+              <p className={s.news__back}>Til baka</p>
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    )
+  } else {
+    return (
+      <div className={s.news}>
+        <div className={s.news__row}>
+          <div className={s.news__col}>
+            <h2 className={s.news__header}>{data.title}</h2>
+            {data.items && data.items.slice(0, 5).map((item, i) => {
+              console.log('category :>> ', item);
+              const {
+                title,
+                link,
+              } = item;
+              return (
+                <a href={link} className={s.news__item__link}> 
+                  <p key={i} className={s.news__item}>{title}</p> 
+                </a>
+              );
+            })}
+            <Link to={id} className={s.news__allnews__link}>
+              <p className={s.news__allnews}>Allar fréttir</p>
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }

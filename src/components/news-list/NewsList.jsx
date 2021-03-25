@@ -1,5 +1,8 @@
+import s from './NewsList.module.scss';
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { News } from '../news/News';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -51,19 +54,17 @@ export function NewsList() {
   }
 
   return (
-    <div className="newslist">
-      <div className="newslist__row">
+    <div className={s.newslist}>
+      <div className={s.newslist__row}>
         {data.length > 0 && data.map((category, i) => {
           console.log('category :>> ', category);
           console.log('i :>> ', i);
           const {
-            title,
             id,
           } = category;
           return (
-            <div key={i} className="newslist__col">
-              <h3>{title}</h3>
-              <Link to={id}>Allar fréttir</Link>
+            <div key={i} className={s.newslist__col}>
+              <News id={id} all={false} />
             </div>
           )
         })}

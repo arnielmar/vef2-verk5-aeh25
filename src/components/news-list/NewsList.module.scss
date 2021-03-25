@@ -1,0 +1,36 @@
+@import '../../config.scss';
+
+.newslist {
+  max-width: $max-width;
+  margin: $gutter auto;
+
+  &__row {
+    @include row;
+
+    flex-wrap: wrap;
+    margin-bottom: $gutter;
+  }
+
+  &__col {
+    @include columns(12);
+
+    @media (min-width: 800px) {
+      @include columns(4);
+    }
+  }
+
+  &__col__header {
+    font-family: $font-heading;
+    margin-bottom: $gutter / 2;
+  }
+
+  &__news {
+    margin-top: $gutter;
+  }
+
+  &__news__link {
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+  }
+}

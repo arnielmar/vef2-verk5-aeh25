@@ -7,6 +7,6 @@ export function NewsPage() {
   let { id } = useParams();
 
   return (
-    <News id={id} />
+    <News id={id} all={true} />
   );
 }

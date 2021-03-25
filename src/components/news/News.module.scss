@@ -6,7 +6,7 @@
   border-radius: 5px;
 
   max-width: $max-width;
-  margin: 0 $gutter;
+  margin: 0 $gutter $gutter * 2 $gutter;
   padding: $gutter;
 
   &__row {
@@ -37,6 +37,16 @@
   }
 
   &__back__link {
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  &__allnews {
+    margin-top: $gutter;
+  }
+
+  &__allnews__link {
     color: #000;
     font-weight: 700;
     text-decoration: none;
