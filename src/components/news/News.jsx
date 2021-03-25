@@ -1,11 +1,11 @@
+import s from './News.module.scss';
+
 import React, { useEffect, useState } from 'react';
 import { Link, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { NotFound } from '../../pages/NotFound';
 
 const apiUrl = process.env.REACT_APP_API_URL;
-
-// TODO importa sass
 
 News.propTypes = {
   id: PropTypes.string,
@@ -73,18 +73,27 @@ export function News({ id }) {
   console.log(data.items);
 
   return (
-    <div className="news">
-      <h3>{data.title}</h3>
-      {data.items && data.items.map((item, i) => {
-        console.log('category :>> ', item);
-        const {
-          title,
-        } = item;
-        return (
-          <p key={i}>{title}</p>
-        );
-      })}
-      <Link to="/">Til baka</Link>
+    <div className={s.news}>
+      <div className={s.news__row}>
+        <div className={s.news__col}>
+          <h2 className={s.news__header}>{data.title}</h2>
+          {data.items && data.items.map((item, i) => {
+            console.log('category :>> ', item);
+            const {
+              title,
+              link,
+            } = item;
+            return (
+              <a href={link} className={s.news__item__link}> 
+                <p key={i} className={s.news__item}>{title}</p> 
+              </a>
+            );
+          })}
+          <Link to="/" className={s.news__back__link}>
+            <p className={s.news__back}>Til baka</p>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,44 @@
+@import '../../config.scss';
+
+.news {
+  background-color: $background-color;
+  border: 1px solid #000;
+  border-radius: 5px;
+
+  max-width: $max-width;
+  margin: 0 $gutter;
+  padding: $gutter;
+
+  &__row {
+    @include row;
+    flex-wrap: wrap;
+  }
+
+  &__col {
+    @include columns(12);
+  }
+
+  &__header {
+    font-family: $font-heading;
+    margin-bottom: $gutter / 2;
+  }
+
+  &__item {
+    font-size: 1.2rem;
+    margin-bottom: $gutter / 3;
+  }
+
+  &__item__link {
+    color: #000;
+  }
+
+  &__back {
+    margin-top: $gutter;
+  }
+
+  &__back__link {
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+  }
+}

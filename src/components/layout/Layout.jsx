@@ -11,7 +11,7 @@ export function Layout({ title, children }) {
       </main>
       <footer>
         <p className={s.layout__footer}>
-          Fréttir frá <a href="https://www.ruv.is">RÚV</a>
+          Fréttir frá <a href="https://www.ruv.is">RÚV.</a>
         </p>
       </footer>
     </div>
