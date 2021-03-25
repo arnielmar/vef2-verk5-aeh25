@@ -14,8 +14,12 @@
   &__col {
     @include columns(12);
 
-    @media (min-width: 800px) {
+    @media (min-width: 1200px) {
       @include columns(4);
+    }
+
+    @media (min-width: 800px) {
+      @include columns(6);
     }
   }
 
@@ -32,5 +36,13 @@
     color: #000;
     font-weight: 700;
     text-decoration: none;
+  }
+
+  &__error {
+    margin-bottom: $gutter;
+  }
+
+  &__loading {
+    margin: $gutter;
   }
 }

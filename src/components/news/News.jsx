@@ -1,6 +1,7 @@
 import s from './News.module.scss';
 
 import React, { useEffect, useState } from 'react';
+import ReactLoading from 'react-loading';
 import { Link, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { NotFound } from '../../pages/NotFound';
@@ -52,7 +53,7 @@ export function News({ id, all }) {
 
   if (loading) {
     return (
-      <p>Sæki gögn...</p>
+      <ReactLoading type="spin" color="#000" height={'3%'} width={'3%'} className={s.news__loading} />
     );
   }
 
@@ -65,8 +66,10 @@ export function News({ id, all }) {
   if (error && all) {
     return (
       <div>
-        <p>Villa kom upp: {error}</p>
-        <Link to="/">Til baka</Link>
+        <p className={s.news__error}>Villa kom upp: {error}</p>
+        <Link to="/" className={s.news__error__link}>
+          <p className={s.news__error__link__text}>Til baka</p>
+        </Link>
       </div>
     );
   }
@@ -74,7 +77,7 @@ export function News({ id, all }) {
   if (error) {
     return (
       <div>
-        <p>Villa kom upp: {error}</p>
+        <p className={s.news__error}>Villa kom upp: {error}</p>
       </div>
     );
   }  

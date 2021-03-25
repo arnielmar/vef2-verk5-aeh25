@@ -51,4 +51,22 @@
     font-weight: 700;
     text-decoration: none;
   }
+
+  &__error {
+    margin-bottom: $gutter;
+  }
+
+  &__error__link {
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  &__error__link__text {
+    margin-bottom: $gutter;
+  }
+
+  &__loading {
+    margin: $gutter;
+  }
 }

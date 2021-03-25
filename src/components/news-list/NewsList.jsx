@@ -1,12 +1,10 @@
 import s from './NewsList.module.scss';
 
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import ReactLoading from 'react-loading';
 import { News } from '../news/News';
 
 const apiUrl = process.env.REACT_APP_API_URL;
-
-// TODO importa sass
 
 export function NewsList() {
   const [loading, setLoading] = useState(false);
@@ -42,14 +40,14 @@ export function NewsList() {
   }, []);
 
   if (loading) {
-    return (
-      <p>Sæki gögn...</p>
-    );
+   return (
+    <ReactLoading type="spin" color="#000" height={'3%'} width={'3%'} className={s.newslist__loading} />
+   );
   }
 
   if (error) {
     return (
-      <p>Villa kom upp: {error}</p>
+      <p className={s.newslist__error}>Villa kom upp: {error}</p>
     );
   }
 
